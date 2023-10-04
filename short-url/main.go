@@ -1,18 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
+
+	"short-url/handle"
 
 	"github.com/gorilla/mux"
 )
 
-func Hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Hello")
-}
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/", Hello)
+	r.HandleFunc("/short", handle.ShortUrl).Methods("POST")
+	r.HandleFunc("/{shortcode}", handle.RedirectURL).Methods("GET")
 
 	http.ListenAndServe(":8080", r)
 }
