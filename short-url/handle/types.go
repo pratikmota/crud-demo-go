@@ -1,7 +1,10 @@
 package handle
 
 type ShortRequest struct {
-	LongUrl         string `json:"url"`
-	MaxRequestCount int    `json:"max_count"`
-	IPAddress       string `json:"ip"`
+	LongUrl string `json:"url"`
+}
+
+type ShortResponse struct {
+	LongUrl  string `json:"url"`
+	ShortUrl string `json:"shorturl"`
 }
